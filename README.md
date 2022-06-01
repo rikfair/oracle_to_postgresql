@@ -23,13 +23,14 @@ The `_parameters.json` file needs to be copied to `parameters.json` and the valu
 - export_data: true or false, should the data be exported too
 - insert_rows: how many rows should be inserted into PostgreSQL in each statement. For me 2500 is good.
 - oracle: The Oracle connection string "<username>/<password>@<host>:<port>/<dbname>"
-- output_to_file: true or false, should files be created
+- oracle_instant_client: The path to the Oracle Instant Client executable. Tested with 12.1
 - postgres: The PostgreSQL connection string "dbname='<dbname>' user='<username>' host='<host>' password='<password>' port='<port>'"
-- schema: The schema name in Oracle to copy to PostgreSQL
 - ignore_data: A list of tables to not include in the *data* extract.
 - ignore_indexes: A list of indexes that we not be required in PostgreSQL
 - ignore_triggers: A list of trigger names not to include in the copy
 - pls2pgs: This is a dictionary of PLSQL terms that have a blunt string replace made on them within the trigger code
   
 Any tables that don't are not required to be copied are expected to have `DEPRECATED` at the beginning of the table comments.
-  
+
+Similarly, any columns that should not be included in the copy, should have their comment begin with `DO NOT USE`.
+

@@ -1,0 +1,4 @@
+.idea/
+.vscode/
+__*__
+src/parameters.json

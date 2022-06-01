@@ -1,0 +1,4 @@
+# When installing cx_oracle:  error: Microsoft Visual C++ 14.0 or greater is required. Get it with "Microsoft C++ Build Tools": https://visualstudio.microsoft.com/visual-cpp-build-tools/
+
+cx_Oracle==8.2.1
+psycopg2==2.9.2
