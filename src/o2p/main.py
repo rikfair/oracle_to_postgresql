@@ -168,7 +168,7 @@ def main(**kwargs):
 # -----------------------------------------------
 
 if __name__ == '__main__':
-    main(export_data=True, datafile_path=False)
+    main(export_data=False, datafile_path=False)
 
 # -----------------------------------------------
 # End.

@@ -21,6 +21,24 @@ import psycopg2
 # -----------------------------------------------
 
 
+def _get_parameters():
+    """ Gets the parameters """
+
+    pf1 = f'{HOME}/parameters.json'
+    pf2 = f'{HOME}/_parameters.json'
+
+    with open(pf1 if os.path.isfile(pf1) else pf2, encoding='utf-8-sig') as jf:
+        data = json.load(jf)
+
+    data['schema'] = data['oracle'].split('/', 1)[0]
+    data['pls2pgs'][f" {data['schema'].upper()}."] = ' '
+
+    return data
+
+
+# -----------------------------------------------
+
+
 def _initialise_postgres():
     """ Initialises the Postgres connection """
 
@@ -39,17 +57,6 @@ def _initialise_postgres():
 # -----------------------------------------------
 
 
-def _read_json_file(f):
-    """ Reads json file """
-
-    f = f.replace('%HOME%', HOME)
-    with open(f, encoding='utf-8-sig') as jf:
-        data = json.load(jf)
-    return data
-
-
-# -----------------------------------------------
-
 def output_type_handler(cursor, name, defaultType, size, precision, scale):  # noqa
     """ Converts Clob to Long to improve performance. Parameter names and order are specified by cx_Oracle """
 
@@ -59,9 +66,8 @@ def output_type_handler(cursor, name, defaultType, size, precision, scale):  # n
 
 # -----------------------------------------------
 
-HOME = os.path.dirname(__file__)
-PARAMETERS = _read_json_file('%HOME%/parameters.json')
-PARAMETERS['schema'] = PARAMETERS['oracle'].split('/', 1)[0]
+HOME = os.path.dirname(os.path.dirname(__file__))
+PARAMETERS = _get_parameters()
 
 cx_Oracle.init_oracle_client(lib_dir=PARAMETERS['oracle_instant_client'])
 OCONN = cx_Oracle.connect(PARAMETERS['oracle'], encoding='UTF-8')

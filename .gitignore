@@ -2,3 +2,5 @@
 .vscode/
 __*__
 src/parameters.json
+build/_
+

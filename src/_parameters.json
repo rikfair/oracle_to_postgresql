@@ -6,7 +6,7 @@
   "insert_rows": 2500,
   "oracle": "<schema>/<password>@<host>:<port>/<dbname>",
   "oracle_instant_client": "<path>",
-  "postgres": "dbname='<dbname>' user='<username>' host='<host>' password='<password>' port='<port>'",
+  "postgres": "dbname='<dbname>' user='<schema>_admin' host='<host>' password='<admin-password>' port='<port>'",
   "ignore_data": [
   ],
   "ignore_indexes": [
@@ -25,6 +25,6 @@
     "RAISE_APPLICATION_ERROR": "CALL RAISE_APPLICATION_ERROR",
     "SQL%ROWCOUNT": "sql_rowcount()"
   },
-  "tablespace_indexes": "tbs_indexes",
-  "tablespace_tables": "tbs_tables"
+  "tablespace_indexes": "ts_indexes",
+  "tablespace_tables": "ts_tables"
 }
