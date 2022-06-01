@@ -1,0 +1,30 @@
+{
+  "datafile_path": "<path>",
+  "direct": true,
+  "encoding": "utf-8",
+  "export_data": true,
+  "insert_rows": 2500,
+  "oracle": "<schema>/<password>@<host>:<port>/<dbname>",
+  "oracle_instant_client": "<path>",
+  "postgres": "dbname='<dbname>' user='<username>' host='<host>' password='<password>' port='<port>'",
+  "ignore_data": [
+  ],
+  "ignore_indexes": [
+  ],
+  "ignore_triggers": [
+  ],
+  "pls2pgs": {
+    "\t": "  ",
+    ":OLD.": "OLD.",
+    ":NEW.": "NEW.",
+    "INSERTING": "TG_OP = 'INSERT'",
+    "UPDATING": "TG_OP = 'UPDATE'",
+    "DELETING": "TG_OP = 'DELETE'",
+    " NUMBER": " NUMERIC",
+    " PLS_INTEGER": " INTEGER",
+    "RAISE_APPLICATION_ERROR": "CALL RAISE_APPLICATION_ERROR",
+    "SQL%ROWCOUNT": "sql_rowcount()"
+  },
+  "tablespace_indexes": "tbs_indexes",
+  "tablespace_tables": "tbs_tables"
+}
